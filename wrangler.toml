@@ -1,0 +1,14 @@
+# Cloudflare Pages/Workers 配置文件
+name = "libretv"
+compatibility_date = "2026-08-31"
+
+# 1. 直接指向项目根目录，因为这个项目没有 ./dist 这样的打包输出目录
+[assets]
+directory = "."
+
+# 2. 重点！强制排除这些不需要上传的巨大文件和无关目录
+exclude = [
+  "node_modules",   # 排除所有依赖包（报错根源）
+  ".git",           # 排除 Git 历史文件
+  "*.log"           # 排除日志文件
+]
